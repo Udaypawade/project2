@@ -1,0 +1,265 @@
+#include <stdio.h>
+#include <stdlib.h> // Include for exit()
+
+char calculateGrade(int score, int max) {
+    if (score >= max * 0.9) return 'A';
+    if (score >= max * 0.75) return 'B';
+    if (score >= max * 0.6) return 'C';
+    return 'D';
+}
+
+void clearInputBuffer() {
+    while (getchar() != '\n'); // Clear the input buffer
+}
+
+int main() {
+    int enter_your_name, age, written_exam, height, running, pull_ups;
+    int reasoning, courage, efficiency;
+    char continueProgram;
+    
+    do {
+        // Age_input
+        printf("welecome to the army selection.\n");
+        printf("enter_your_name_\n");
+        scanf("%s",&enter_your_name);
+       clearInputBuffer();
+        
+        
+        
+        printf("Enter your age (16-22): ");
+        if (scanf("%d", &age) != 1 || age < 16 || age > 22) {
+            printf("Error: Age must be between 16 and 22. Disqualified due to age form Army Selection , if you try to again next time due to age required between 16 to 22  .\n");
+            exit(EXIT_FAILURE);
+        }
+     // Written exam input
+        printf("Enter your written exam score (0-100): ");
+        while (scanf("%d", &written_exam) != 1 || written_exam < 0 || written_exam > 100) {
+            printf("Error: Written exam score must be between 0 and 100. Please try again: ");
+            clearInputBuffer();
+        }
+        if (written_exam < 60) {
+            printf("Disqualified due to low written exam score. Try again next time.\n");
+            continue;
+
+        }
+        // Height input
+        printf("Enter your height in cm (must be greater than 162): ");
+        if (scanf("%d", &height) != 1 || height <= 162) {
+            printf("Error: Height is not matched,you are disqualified , please don't lose hope try agan next time . Exiting.\n");
+            exit(EXIT_FAILURE);
+        }
+
+        // 1600 meter run input with validation
+        printf("Did you complete the 1600 meter run (1 for yes, 0 for no)? ");
+        while (1) {
+            if (scanf("%d", &running) != 1 || (running != 0 && running != 1)) {
+                printf("Error: Please enter 1 for yes or 0 for no: ");
+                clearInputBuffer();
+            } else {
+                break; // Valid input received
+            }
+        }
+
+        if (running != 1) {
+            printf("Disqualified due to not completing the run. Try again next time.\n");
+            continue;
+        }
+
+
+           // Pull-ups input
+        printf("Enter the number of pull-ups (0-10): ");
+        while (scanf("%d", &pull_ups) != 1 || pull_ups < 0 || pull_ups > 10) {
+            printf("Error: Pull-ups must be between 0 and 10. Please try again: ");
+            clearInputBuffer();
+        }
+
+               // Interview inputs
+        printf("Rate your reasoning ability (1 for high, 0 for low): ");
+        while (scanf("%d", &reasoning) != 1 || (reasoning != 0 && reasoning != 1)) {
+            printf("Error: Please enter 1 for high or 0 for low: ");
+            clearInputBuffer();
+        }
+
+     printf("Rate your courage (1 for high, 0 for low): ");
+        while (scanf("%d", &courage) != 1 || (courage != 0 && courage != 1)) {
+            printf("Error: Please enter 1 for high or 0 for low: ");
+            clearInputBuffer();
+        }
+
+        printf("Rate your efficiency (1 for high, 0 for low): ");
+        while (scanf("%d", &efficiency) != 1 || (efficiency != 0 && efficiency != 1)) {
+            printf("Error: Please enter 1 for high or 0 for low: ");
+            clearInputBuffer();
+        }
+
+
+        // Calculate overall score for grading
+        int overall_score = (written_exam + (pull_ups * 10)) / 2; // Adjust scoring logic as needed
+        char grade = calculateGrade(overall_score, 100);
+
+        // Display results
+        printf("\nResults:\n");
+        printf("Enter Your Name: %s\n",&enter_your_name);
+        printf("Written Exam Score: %d\n", written_exam);
+        printf("Pull-ups: %d\n", pull_ups);
+        printf("Reasoning: %d (1 for high, 0 for low)\n", reasoning);
+        printf("Courage: %d (1 for high, 0 for low)\n", courage);
+        printf("Efficiency: %d (1 for high, 0 for low)\n", efficiency);
+        printf("Overall Score: %d\n", overall_score);
+        printf("Grade: %c\n", grade);
+
+        // Determine position based on grade
+        if (grade == 'A') {
+            printf("Congratulations! You are selected for the Major position in the army.\n");
+        } else if (grade == 'B') {
+            printf("Congratulations! You are selected for the Captain position in the army.\n");
+        } else if (grade == 'C') {
+            printf("Congratulations! You are selected for the Lieutenant position in the army.\n");
+        } else {
+            printf("Unfortunately, you did not qualify for a position this time. Keep trying!\n");
+        }
+
+        // Ask to continue
+        printf("\nDo you want to register a new candidate? (Y/N): ");
+        while (scanf(" %c", &continueProgram) != 1 || 
+               (continueProgram != 'Y' && continueProgram != 'y' && 
+                continueProgram != 'N' && continueProgram != 'n')) {
+            printf("Error: Please enter Y or N: ");
+            clearInputBuffer();
+        }
+    } while (continueProgram == 'Y' || continueProgram == 'y');
+
+    return 0;
+}#include <stdio.h>
+#include <stdlib.h> // Include for exit()
+
+char calculateGrade(int score, int max) {
+    if (score >= max * 0.9) return 'A';
+    if (score >= max * 0.75) return 'B';
+    if (score >= max * 0.6) return 'C';
+    return 'D';
+}
+
+void clearInputBuffer() {
+    while (getchar() != '\n'); // Clear the input buffer
+}
+
+int main() {
+    int enter_your_name, age, written_exam, height, running, pull_ups;
+    int reasoning, courage, efficiency;
+    char continueProgram;
+    
+    do {
+        // Age_input
+        printf("welecome to the army selection.\n");
+        printf("enter_your_name_\n");
+        scanf("%s",&enter_your_name);
+       clearInputBuffer();
+        
+        
+        
+        printf("Enter your age (16-22): ");
+        if (scanf("%d", &age) != 1 || age < 16 || age > 22) {
+            printf("Error: Age must be between 16 and 22. Disqualified due to age form Army Selection , if you try to again next time due to age required between 16 to 22  .\n");
+            exit(EXIT_FAILURE);
+        }
+     // Written exam input
+        printf("Enter your written exam score (0-100): ");
+        while (scanf("%d", &written_exam) != 1 || written_exam < 0 || written_exam > 100) {
+            printf("Error: Written exam score must be between 0 and 100. Please try again: ");
+            clearInputBuffer();
+        }
+        if (written_exam < 60) {
+            printf("Disqualified due to low written exam score. Try again next time.\n");
+            continue;
+
+        }
+        // Height input
+        printf("Enter your height in cm (must be greater than 162): ");
+        if (scanf("%d", &height) != 1 || height <= 162) {
+            printf("Error: Height is not matched,you are disqualified , please don't lose hope try agan next time . Exiting.\n");
+            exit(EXIT_FAILURE);
+        }
+
+        // 1600 meter run input with validation
+        printf("Did you complete the 1600 meter run (1 for yes, 0 for no)? ");
+        while (1) {
+            if (scanf("%d", &running) != 1 || (running != 0 && running != 1)) {
+                printf("Error: Please enter 1 for yes or 0 for no: ");
+                clearInputBuffer();
+            } else {
+                break; // Valid input received
+            }
+        }
+
+        if (running != 1) {
+            printf("Disqualified due to not completing the run. Try again next time.\n");
+            continue;
+        }
+
+
+           // Pull-ups input
+        printf("Enter the number of pull-ups (0-10): ");
+        while (scanf("%d", &pull_ups) != 1 || pull_ups < 0 || pull_ups > 10) {
+            printf("Error: Pull-ups must be between 0 and 10. Please try again: ");
+            clearInputBuffer();
+        }
+
+               // Interview inputs
+        printf("Rate your reasoning ability (1 for high, 0 for low): ");
+        while (scanf("%d", &reasoning) != 1 || (reasoning != 0 && reasoning != 1)) {
+            printf("Error: Please enter 1 for high or 0 for low: ");
+            clearInputBuffer();
+        }
+
+     printf("Rate your courage (1 for high, 0 for low): ");
+        while (scanf("%d", &courage) != 1 || (courage != 0 && courage != 1)) {
+            printf("Error: Please enter 1 for high or 0 for low: ");
+            clearInputBuffer();
+        }
+
+        printf("Rate your efficiency (1 for high, 0 for low): ");
+        while (scanf("%d", &efficiency) != 1 || (efficiency != 0 && efficiency != 1)) {
+            printf("Error: Please enter 1 for high or 0 for low: ");
+            clearInputBuffer();
+        }
+
+
+        // Calculate overall score for grading
+        int overall_score = (written_exam + (pull_ups * 10)) / 2; // Adjust scoring logic as needed
+        char grade = calculateGrade(overall_score, 100);
+
+        // Display results
+        printf("\nResults:\n");
+        printf("Enter Your Name: %s\n",&enter_your_name);
+        printf("Written Exam Score: %d\n", written_exam);
+        printf("Pull-ups: %d\n", pull_ups);
+        printf("Reasoning: %d (1 for high, 0 for low)\n", reasoning);
+        printf("Courage: %d (1 for high, 0 for low)\n", courage);
+        printf("Efficiency: %d (1 for high, 0 for low)\n", efficiency);
+        printf("Overall Score: %d\n", overall_score);
+        printf("Grade: %c\n", grade);
+
+        // Determine position based on grade
+        if (grade == 'A') {
+            printf("Congratulations! You are selected for the Major position in the army.\n");
+        } else if (grade == 'B') {
+            printf("Congratulations! You are selected for the Captain position in the army.\n");
+        } else if (grade == 'C') {
+            printf("Congratulations! You are selected for the Lieutenant position in the army.\n");
+        } else {
+            printf("Unfortunately, you did not qualify for a position this time. Keep trying!\n");
+        }
+
+        // Ask to continue
+        printf("\nDo you want to register a new candidate? (Y/N): ");
+        while (scanf(" %c", &continueProgram) != 1 || 
+               (continueProgram != 'Y' && continueProgram != 'y' && 
+                continueProgram != 'N' && continueProgram != 'n')) {
+            printf("Error: Please enter Y or N: ");
+            clearInputBuffer();
+        }
+    } while (continueProgram == 'Y' || continueProgram == 'y');
+
+    return 0;
+}
